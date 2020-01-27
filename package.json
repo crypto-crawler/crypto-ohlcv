@@ -1,7 +1,7 @@
 {
-  "name": "crypto-volume",
-  "version": "0.0.4",
-  "description": "Get last 24 hours trade volume of all pairs.",
+  "name": "crypto-ohlcv",
+  "version": "0.0.5",
+  "description": "Get last 24 hours OHLCV(open, high, low, close, volume) of all pairs.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/soulmachine/crypto-volume.git"
+    "url": "git+https://github.com/soulmachine/crypto-ohlcv.git"
   },
   "keywords": [
     "cryptocurrency",
@@ -29,9 +29,9 @@
   "author": "soulmachine",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/soulmachine/crypto-volume/issues"
+    "url": "https://github.com/soulmachine/crypto-ohlcv/issues"
   },
-  "homepage": "https://github.com/soulmachine/crypto-volume",
+  "homepage": "https://github.com/soulmachine/crypto-ohlcv",
   "devDependencies": {
     "@types/node": "^13.5.0",
     "@types/yargs": "^15.0.1",

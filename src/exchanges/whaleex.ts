@@ -1,7 +1,7 @@
 import { strict as assert } from 'assert';
 import Axios from 'axios';
 import normalize from 'crypto-pair';
-import { Volume } from '../pojo/volume';
+import { OHLCV } from '../pojo/ohlcv';
 
 interface SymbolInfo {
   name: string;
@@ -14,8 +14,8 @@ interface SymbolInfo {
   status: 'ON' | 'OFF';
 }
 
-export default async function getVolume(): Promise<{ [key: string]: Volume }> {
-  const result: { [key: string]: Volume } = {};
+export default async function getOHLCV(): Promise<{ [key: string]: OHLCV }> {
+  const result: { [key: string]: OHLCV } = {};
 
   const response = await Axios.get('https://api.whaleex.com/BUSINESS/api/public/symbol');
   assert.equal(response.status, 200);

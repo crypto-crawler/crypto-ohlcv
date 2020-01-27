@@ -1,7 +1,7 @@
 import { strict as assert } from 'assert';
 import Axios from 'axios';
 import normalize from 'crypto-pair';
-import { Volume } from '../pojo/volume';
+import { OHLCV } from '../pojo/ohlcv';
 
 interface Ticker24hr {
   symbol: string;
@@ -25,14 +25,14 @@ interface Ticker24hr {
   count: number;
 }
 
-export default async function getVolume(): Promise<{ [key: string]: Volume }> {
+export default async function getOHLCV(): Promise<{ [key: string]: OHLCV }> {
   const response = await Axios.get('https://api.binance.com/api/v3/ticker/24hr');
 
   assert.equal(response.status, 200);
 
   const data = response.data as Ticker24hr[];
 
-  const result: { [key: string]: Volume } = {};
+  const result: { [key: string]: OHLCV } = {};
   data.forEach(x => {
     const normalizedPair = normalize(x.symbol, 'Binance');
 

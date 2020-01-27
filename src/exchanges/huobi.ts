@@ -1,7 +1,7 @@
 import { strict as assert } from 'assert';
 import Axios from 'axios';
 import normalize from 'crypto-pair';
-import { Volume } from '../pojo/volume';
+import { OHLCV } from '../pojo/ohlcv';
 
 interface Ticker24hr {
   open: number;
@@ -14,7 +14,7 @@ interface Ticker24hr {
   symbol: string;
 }
 
-export default async function getVolume(): Promise<{ [key: string]: Volume }> {
+export default async function getOHLCV(): Promise<{ [key: string]: OHLCV }> {
   const response = await Axios.get('https://api.huobi.pro/market/tickers');
 
   assert.equal(response.status, 200);
@@ -22,7 +22,7 @@ export default async function getVolume(): Promise<{ [key: string]: Volume }> {
 
   const data = response.data.data as Ticker24hr[];
 
-  const result: { [key: string]: Volume } = {};
+  const result: { [key: string]: OHLCV } = {};
   data.forEach(x => {
     const normalizedPair = normalize(x.symbol, 'Huobi');
 

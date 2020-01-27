@@ -1,6 +1,6 @@
 import { strict as assert } from 'assert';
 import Axios from 'axios';
-import { Volume } from '../pojo/volume';
+import { OHLCV } from '../pojo/ohlcv';
 
 interface Ticker {
   high: string;
@@ -14,7 +14,7 @@ interface Ticker {
   open: string;
 }
 
-export default async function getVolume(): Promise<{ [key: string]: Volume }> {
+export default async function getOHLCV(): Promise<{ [key: string]: OHLCV }> {
   const pairsResponse = await Axios.get('https://www.bitstamp.net/api/v2/trading-pairs-info/');
   assert.equal(pairsResponse.status, 200);
 
@@ -27,7 +27,7 @@ export default async function getVolume(): Promise<{ [key: string]: Volume }> {
   );
   const responses = await Promise.all(requests);
 
-  const result: { [key: string]: Volume } = {};
+  const result: { [key: string]: OHLCV } = {};
 
   for (let i = 0; i < ALL_PAIRS.length; i += 1) {
     const response = responses[i];

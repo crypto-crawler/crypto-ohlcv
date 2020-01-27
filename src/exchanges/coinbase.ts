@@ -1,6 +1,6 @@
 import { strict as assert } from 'assert';
 import Axios from 'axios';
-import { Volume } from '../pojo/volume';
+import { OHLCV } from '../pojo/ohlcv';
 
 interface Ticker {
   open: string;
@@ -17,13 +17,13 @@ interface Stats {
   };
 }
 
-export default async function getVolume(): Promise<{ [key: string]: Volume }> {
+export default async function getOHLCV(): Promise<{ [key: string]: OHLCV }> {
   const response = await Axios.get('https://api.pro.coinbase.com/products/stats');
   assert.equal(response.status, 200);
 
   const stats: Stats = response.data;
 
-  const result: { [key: string]: Volume } = {};
+  const result: { [key: string]: OHLCV } = {};
 
   Object.keys(stats).forEach(productId => {
     const pair = productId.replace(/-/, '_');

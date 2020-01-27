@@ -1,21 +1,21 @@
-# crypto-volume
+# crypto-ohlcv
 
-Get last 24 hours trade volume of a cryptocurrency.
+Get last 24 hours OHLCV(open, high, low, close, volume) of all pairs.
 
 ## Quick start
 
 ```bash
-npx crypto-volume Binance
+npx crypto-ohlcv Binance
 ```
 
 ## How to use
 
 ```javascript
 /* eslint-disable import/no-unresolved,no-console */
-const getVolume = require('crypto-volume').default;
+const getOHLCV = require('crypto-ohlcv').default;
 
 (async () => {
-  console.info(await getVolume('Binance'));
+  console.info(await getOHLCV('Binance'));
 })();
 ```
 
@@ -25,10 +25,10 @@ There is only one API in this library:
 
 ```typescript
 /**
- * Get last 24 hours trade volume of all pairs.
+ * Get last 24 hours OHLCV(open, high, low, close, volume) of all pairs.
  *
  * @param exchange Thee exchange name
- * @returns Last 24 hours trade volume
+ * @returns Last 24 hours OHLCV
  */
-export default function getVolume(exchange: string): Promise<{ [key: string]: Volume }>;
+export default function getOHLCV(exchange: string): Promise<{ [key: string]: OHLCV }>;
 ```

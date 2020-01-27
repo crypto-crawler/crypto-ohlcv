@@ -1,15 +1,15 @@
 import { strict as assert } from 'assert';
 import Axios from 'axios';
 import normalize from 'crypto-pair';
-import { Volume } from '../pojo/volume';
+import { OHLCV } from '../pojo/ohlcv';
 
-export default async function getVolume(): Promise<{ [key: string]: Volume }> {
+export default async function getOHLCV(): Promise<{ [key: string]: OHLCV }> {
   const response = await Axios.get('https://api-pub.bitfinex.com/v2/tickers?symbols=ALL');
   assert.equal(response.status, 200);
 
   const arr2D = response.data as (string | number)[][];
 
-  const result: { [key: string]: Volume } = {};
+  const result: { [key: string]: OHLCV } = {};
   arr2D.forEach(arr => {
     const symbol = arr[0] as string;
     if (symbol[0] !== 't') return;

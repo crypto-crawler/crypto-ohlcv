@@ -1,14 +1,14 @@
 import { strict as assert } from 'assert';
-import getVolumeBinance from './exchanges/binance';
-import getVolumeBitfinex from './exchanges/bitfinex';
-import getVolumeBitstamp from './exchanges/bitstamp';
-import getVolumeCoinbase from './exchanges/coinbase';
-import getVolumeHuobi from './exchanges/huobi';
-import getVolumeNewdex from './exchanges/newdex';
-import getVolumeWhaleEx from './exchanges/whaleex';
-import { Volume } from './pojo/volume';
+import getOHLCVBinance from './exchanges/binance';
+import getOHLCVBitfinex from './exchanges/bitfinex';
+import getOHLCVBitstamp from './exchanges/bitstamp';
+import getOHLCVCoinbase from './exchanges/coinbase';
+import getOHLCVHuobi from './exchanges/huobi';
+import getOHLCVNewdex from './exchanges/newdex';
+import getOHLCVWhaleEx from './exchanges/whaleex';
+import { OHLCV } from './pojo/ohlcv';
 
-export { Volume } from './pojo/volume';
+export { OHLCV } from './pojo/ohlcv';
 
 /**
  * Get last 24 hours trade volume of all pairs.
@@ -16,30 +16,30 @@ export { Volume } from './pojo/volume';
  * @param exchange Thee exchange name
  * @returns Last 24 hours trade volume
  */
-export default async function getVolume(exchange: string): Promise<{ [key: string]: Volume }> {
+export default async function getOHLCV(exchange: string): Promise<{ [key: string]: OHLCV }> {
   assert.ok(exchange);
 
   switch (exchange) {
     case 'Binance': {
-      return getVolumeBinance();
+      return getOHLCVBinance();
     }
     case 'Bitfinex': {
-      return getVolumeBitfinex();
+      return getOHLCVBitfinex();
     }
     case 'Bitstamp': {
-      return getVolumeBitstamp();
+      return getOHLCVBitstamp();
     }
     case 'Coinbase': {
-      return getVolumeCoinbase();
+      return getOHLCVCoinbase();
     }
     case 'Huobi': {
-      return getVolumeHuobi();
+      return getOHLCVHuobi();
     }
     case 'Newdex': {
-      return getVolumeNewdex();
+      return getOHLCVNewdex();
     }
     case 'WhaleEx': {
-      return getVolumeWhaleEx();
+      return getOHLCVWhaleEx();
     }
     default:
       throw new Error(`Unsupported exchange: ${exchange}`);

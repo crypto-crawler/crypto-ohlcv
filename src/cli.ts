@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 import yargs from 'yargs';
-import getVolume from './index';
+import getOHLCV from './index';
 
 const EXCHANGES = ['Binance', 'Bitfinex', 'Bitstamp', 'Coinbase', 'Huobi', 'Newdex', 'WhaleEx'];
 
@@ -16,6 +16,6 @@ const { argv } = yargs
   });
 
 (async () => {
-  const volume = await getVolume(argv.exchange as string);
+  const volume = await getOHLCV(argv.exchange as string);
   console.info(volume);
 })();
